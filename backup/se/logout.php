@@ -1,0 +1,11 @@
+<?php
+session_start();
+include_once("db.php");
+if(isset($_COOKIE[session_name()]))
+{
+	setcookie(session_name(),'',time()-60*60*24);
+}
+unset($_SESSION['username']);
+session_destroy();
+header("location:index.php");
+?>
